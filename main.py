@@ -12,7 +12,7 @@ class Person(object):
 housemates = {
     "Adam" : Person("Adam", "Adams-iPhone", False, "Adam.mp3", False),
     "Ali" : Person("Ali", "Alis-S8", False, "Ali.mp3", False),
-    "Alice" : Person("Alice", "Alices-iphone", False, "Ali.mp3", False),
+    "Alice" : Person("Alice", "Alices-iphone", False, "Alice.mp3", False),
 }
 
 smarthub = BTSmartHub(router_ip='192.168.1.254')
