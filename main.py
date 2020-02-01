@@ -13,6 +13,8 @@ housemates = {
     "Adam" : Person("Adam", "Adams-iPhone", False, "Adam.mp3", False),
     "Ali" : Person("Ali", "Alis-S8", False, "Ali.mp3", False),
     "Alice" : Person("Alice", "Alices-iphone", False, "Alice.mp3", False),
+    "Cox" : Person("Cox", "", False, "Cox.mp3", False),
+    "Richard" : Person("Richard", "", False, "Richard.mp3", False),
 }
 
 smarthub = BTSmartHub(router_ip='192.168.1.254')
@@ -22,20 +24,18 @@ while True:
 
     # Determine present devices
     for name in housemates:
-        test = False
+        atHome = False
         for entry in device_list:
             if housemates[name].hostname == entry ['UserHostName']:
-                test = True
-                print(name+" is home")
-                # Not 100% sure whether this will work, should check
+                atHome = True
                 break
-        housemates[name].home = test
+        housemates[name].home = atHome
 
     # Alert regarding presence
     for name in housemates:
         if housemates[name].home:
             if not housemates[name].played:
-                os.system('omxplayer '+housemates[name].sound)  # Only to be used when on debian
+                os.system('omxplayer '+housemates[name].sound)
                 housemates[name].played = True
         else:
             housemates[name].played = False
